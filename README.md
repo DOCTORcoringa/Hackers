@@ -6,27 +6,14 @@
 
 ## Guia rápido de instalação e execução
 
-Faça os passos abaixo no seu Termux para instalar todas as dependências do sistema e do Python, clonar este repositório e rodar o script.
-
-Atualiza a lista de pacotes do Termux
-pkg update -y && \
-
-Atualiza os pacotes instalados para versões mais recentes
-pkg upgrade -y && \
-
-Instala Python, Git, compilador Clang e bibliotecas essenciais para executar pacotes Python complexos
-pkg install python git clang libffi openssl rust -y && \
-
-Instala as bibliotecas Python essenciais para o script
-pip install paramiko requests shodan && \
-
-Clona o repositório com os scripts Python
-git clone https://github.com/DOCTORcoringa/Hackers.git && \
-
-Entra no diretório do projeto clonado
-cd Hackers && \
-
-Executa o script Python principal
+#!/bin/bash
+pkg update -y
+pkg upgrade -y
+pkg install python git clang libffi openssl rust make pkg-config libsodium -y
+pip install --no-cache-dir --upgrade pip setuptools wheel
+SODIUM_INSTALL=system pip install pynacl paramiko requests shodan
+git clone https://github.com/DOCTORcoringa/Hackers.git
+cd Hackers
 python Ferramentas.py
 
 ---
